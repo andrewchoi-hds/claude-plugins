@@ -1,4 +1,4 @@
-# TIL (Today I Learned) - 2024
+# TIL (Today I Learned) - 2026-01-12
 
 ## Claude Code 플러그인 개발
 
