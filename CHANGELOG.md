@@ -1,96 +1,97 @@
-# Changelog
+# 변경 이력
 
-All notable changes to session-wrap plugin will be documented in this file.
+session-wrap 플러그인의 주요 변경사항을 기록합니다.
 
 ---
 
 ## [1.1.0] - 2026-01-13
 
-### Added
+### 추가된 기능
 
-#### Dynamic Language Detection
-- Automatic language detection based on trigger language
-- `[LANG: ko]` tag for Korean output
-- `[LANG: en]` tag for English output
-- All 5 agents now support bilingual output templates
+#### 동적 언어 감지
+- 트리거 언어에 따라 자동으로 출력 언어 결정
+- `[LANG: ko]` 태그 → 한국어 출력
+- `[LANG: en]` 태그 → 영어 출력
+- 5개 에이전트 모두 한/영 출력 템플릿 지원
 
-#### Expanded Triggers (24 → 65+)
-New trigger categories:
-| Category | Examples |
-|----------|----------|
-| Spacing variants | 세션정리, 세션 정리 |
-| Ending variants | 정리하자, 정리할까, 정리해줘 |
-| Honorifics | 정리해주세요, 마무리해주세요 |
-| English variants | wrap it up, let's wrap, done for today |
-| Mixed (KR/EN) | wrap 해줘, 세션 wrap |
+#### 트리거 확장 (24개 → 65개+)
 
-#### Phase 3 User Selection
-Complete implementation with 5 action options:
-1. Create commit
-2. Update CLAUDE.md
-3. Create automation
-4. Save to TIL.md
-5. Save to TODO.md
+| 카테고리 | 예시 |
+|----------|------|
+| 띄어쓰기 변형 | 세션정리, 세션 정리 |
+| 어미 변형 | 정리하자, 정리할까, 정리해줘 |
+| 존댓말 | 정리해주세요, 마무리해주세요 |
+| 영어 변형 | wrap it up, let's wrap, done for today |
+| 한영 혼합 | wrap 해줘, 세션 wrap |
 
-### Changed
+#### Phase 3 사용자 선택 완성
 
-#### Improved Output Format
-- All agents now use table-based structured output
-- Consistent format across all 5 agents:
-  - doc-updater
-  - automation-scout
-  - learning-extractor
-  - followup-suggester
-  - duplicate-checker
+5가지 액션 옵션 구현:
+1. 커밋 생성
+2. CLAUDE.md 업데이트
+3. 자동화 생성
+4. TIL.md 저장
+5. TODO.md 저장
 
-**Before:**
+### 변경된 사항
+
+#### 출력 형식 개선
+
+모든 에이전트가 테이블 기반 구조화된 출력 사용:
+- doc-updater
+- automation-scout
+- learning-extractor
+- followup-suggester
+- duplicate-checker
+
+**이전:**
 ```markdown
-- [Section]: [Content] — [Reason]
+- [섹션]: [내용] — [이유]
 ```
 
-**After:**
+**이후:**
 ```markdown
-| Item | Content |
-|------|---------|
-| **Content to Add** | [Specific content] |
-| **Rationale** | [Pattern found in session] |
+| 항목 | 내용 |
+|------|------|
+| **추가할 내용** | [구체적인 내용] |
+| **근거** | [세션에서 발견된 패턴] |
 ```
 
-### Files Changed
-- `.claude/agents/*.md` - All 5 agent files
-- `.claude/commands/wrap.md` - Language detection + Phase 3 logic
-- `.claude/settings.json` - Trigger expansion (v1.1.0)
-- `CLAUDE.md` - Updated improvement checklist
+### 수정된 파일
+- `.claude/agents/*.md` - 5개 에이전트 파일 전체
+- `.claude/commands/wrap.md` - 언어 감지 + Phase 3 로직
+- `.claude/settings.json` - 트리거 확장 (v1.1.0)
+- `CLAUDE.md` - 향후 개선 체크리스트 업데이트
 
 ---
 
 ## [1.0.0] - 2026-01-12
 
-### Initial Release
+### 최초 릴리즈
 
-#### Features
-- `/wrap` command for session wrap-up
-- 5 analysis agents:
-  - doc-updater: Documentation update suggestions
-  - automation-scout: Automation opportunity detection
-  - learning-extractor: TIL extraction
-  - followup-suggester: Follow-up task suggestions
-  - duplicate-checker: Duplicate validation
-- Phase-based workflow (parallel → sequential → interactive)
-- 24 Korean/English triggers
-- Korean-first output
+#### 기능
+- `/wrap` 명령어로 세션 마무리
+- 5개 분석 에이전트:
+  - doc-updater: 문서 업데이트 제안
+  - automation-scout: 자동화 기회 탐지
+  - learning-extractor: TIL 추출
+  - followup-suggester: 다음 할 일 제안
+  - duplicate-checker: 중복 검증
+- Phase 기반 워크플로우 (병렬 → 순차 → 대화)
+- 한국어/영어 트리거 24개
+- 한국어 우선 출력
 
 ---
 
-## Roadmap
+## 향후 계획
 
-### P1 (High)
-- [ ] English README
+### P1 (높음)
+- [ ] README 영어 버전
 
-### P2 (Medium)
-- [ ] Phase 3 action validation
-- [ ] TODO.md auto-save verification
+### P2 (중간)
+- [ ] Phase 3 액션 검증
+- [ ] TODO.md 자동 저장 검증
 
-### P3 (Low)
-- [ ] Japanese/Chinese support
-- [ ] Performance optimization
+### P3 (낮음)
+- [ ] 일본어/중국어 지원
+- [ ] 성능 최적화
